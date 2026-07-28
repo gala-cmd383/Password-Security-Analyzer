@@ -1,9 +1,14 @@
 from password_analyzer.analyzer import PasswordAnalyzer
 
 def main():
-    test_password = "P@ssword123!"
+    print("=== Password Security Analyzer ===")
+    
+    # Prompt the user to enter a password
+    test_password = input("Enter a password to analyze: ")
+    
     analyzer = PasswordAnalyzer(test_password)
 
+    print("\nAnalyzing...")
     entropy = analyzer.calculate_entropy()
     print(f"Entropy: {entropy} bits")
 
