@@ -1,42 +1,58 @@
 # Password Security Analyzer
 
-A Python-based cybersecurity project that analyzes password strength and provides security recommendations.
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+A professional Python package designed to evaluate password strength using Shannon Entropy mathematical calculations and perform breach checks via the HaveIBeenPwned API using k-Anonymity.
+
+---
 
 ## Features
 
-- Password strength evaluation
-- Length analysis
-- Uppercase and lowercase detection
-- Number detection
-- Special character detection
-- Security recommendations
+* **Entropy Calculation:** Measures password randomness using the formula E = L \times \log_2(R).
+* **Breach Detection:** Checks if the password has been leaked using the HaveIBeenPwned API.
+* **Privacy First:** Implements k-Anonymity (SHA-1 hashing) to keep passwords safe locally without exposing them over the network.
 
-## Technologies Used
+---
 
-- Python
-- Regular Expressions (re)
+## Project Structure
 
-## Example
+The project is organized to support future distribution via pip:
 
-Input:
+* `password_analyzer/` 
+  * `__init__.py`
+  * `analyzer.py`
+* `main.py`
+* `README.md`
 
-```text
-Password123!
-```
+---
 
-Output:
+## Interactive Usage Example
 
-```text
-Security Report
-------------------------------
-Score: 6
-Strength: Strong
-```
+```python
+from password_analyzer.analyzer import PasswordAnalyzer
 
-## Future Improvements
+def main():
+    print("=== Password Security Analyzer ===")
+    
+    # Prompt the user to enter a password
+    test_password = input("Enter a password to analyze: ")
+    
+    analyzer = PasswordAnalyzer(test_password)
 
-- Password entropy calculation
-- Common password detection
-- Breach password database integration
-- Graphical interface
-- Security score visualization
+    print("\nAnalyzing...")
+    entropy = analyzer.calculate_entropy()
+    print(f"Entropy: {entropy} bits")
+
+    breaches = analyzer.check_breach()
+    
+    if breaches > 0:
+        print(f"Warning: Password leaked {breaches} times!")
+    elif breaches == 0:
+        print("Safe: Password not found in leaked databases.")
+    else:
+        print("Error: Could not complete the breach check.")
+
+if __name__ == "__main__":
+    main()
+
