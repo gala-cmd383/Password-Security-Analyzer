@@ -34,19 +34,19 @@ class PasswordAnalyzer:
         suffix = sha1_password[5:]
 
         url = f"https://api.pwnedpasswords.com/range/{prefix}"
+        headers = {"User-Agent": "Password-Security-Analyzer-Tool"}
 
         try:
-            response = requests.get(url, timeout=5)
+            response = requests.get(url, headers=headers, timeout=5)
             if response.status_code != 200:
-                raise RuntimeError(f"API connection error: {response.status_code}")
+                return -1
 
             hashes = (line.split(":") for line in response.text.splitlines())
             for h, count in hashes:
                 if h == suffix:
-                    return int(count) 
+                    return int(count)
 
-            return 0 
+            return 0
 
-        except requests.RequestException as e:
-            print(f"Server connection error: {e}")
+        except requests.RequestException:
             return -1
