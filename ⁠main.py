@@ -1,25 +1,41 @@
+import sys
+from getpass import getpass
 from password_analyzer.analyzer import PasswordAnalyzer
 
 def main():
-    print("=== Password Security Analyzer ===")
+    print("=" * 35)
+    print("    Password Security Analyzer    ")
+    print("=" * 35)
     
-    # Prompt the user to enter a password
-    test_password = input("Enter a password to analyze: ")
+    # Prompt the user for input securely without echoing characters
+    password = getpass("Enter password to analyze (input hidden): ").strip()
     
-    analyzer = PasswordAnalyzer(test_password)
+    if not password:
+        print("[!] Error: Password cannot be empty.")
+        sys.exit(1)
 
-    print("\nAnalyzing...")
-    entropy = analyzer.calculate_entropy()
-    print(f"Entropy: {entropy} bits")
-
-    breaches = analyzer.check_breach()
+    print("\n[+] Analyzing password strength and integrity...")
     
-    if breaches > 0:
-        print(f"Warning: Password leaked {breaches} times!")
-    elif breaches == 0:
-        print("Safe: Password not found in leaked databases.")
-    else:
-        print("Error: Could not complete the breach check.")
+    try:
+        analyzer = PasswordAnalyzer(password)
+
+        # 1. Calculate Shannon Entropy
+        entropy = analyzer.calculate_entropy()
+        print(f"[*] Shannon Entropy : {entropy:.2f} bits")
+
+        # 2. Check for breaches via HIBP API
+        breaches = analyzer.check_breach()
+        
+        if breaches > 0:
+            print(f"[!] Alert           : Compromised! Found in breaches {breaches:,} times.")
+        elif breaches == 0:
+            print("[✓] Status          : Clean (No breaches found in HIBP database).")
+        else:
+            print("[-] Warning         : Breach check skipped or service unreachable.")
+
+    except Exception as e:
+        print(f"[!] An unexpected error occurred: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
