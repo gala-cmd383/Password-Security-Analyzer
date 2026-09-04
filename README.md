@@ -9,9 +9,12 @@ A modular, defensive Python tool and package designed to evaluate password stren
 
 ## 🌟 Key Features
 
-* **Shannon Entropy Analysis:** Evaluates theoretical randomness and complexity using:
+* **Shannon Entropy Analysis:** Evaluates theoretical randomness and complexity based on password length and character pool size using:
   $$E = L \times \log_2(R)$$
   *(where $L$ is password length and $R$ is character pool size).*
+
+> **Note on Entropy:** This tool calculates theoretical Shannon Entropy based on mathematical randomness. Because human-generated passwords often rely on common dictionary words or predictable substitutions, theoretical entropy alone does not guarantee resilience against targeted pattern-based attacks. For this reason, the tool integrates the Have I Been Pwned (HIBP) API to cross-reference passwords against known real-world breaches and leaks.
+
 * **Real-World Breach Detection:** Queries the official Have I Been Pwned (HIBP) database to detect if credentials appeared in known data breaches.
 * **Privacy-Preserving (k-Anonymity):** Generates client-side SHA-1 hashes and transmits only the first 5 characters (prefix) over the network. Plaintext passwords never leave the local environment.
 * **Modular Interface:** Usable as a standalone CLI tool or imported directly into Python applications.
