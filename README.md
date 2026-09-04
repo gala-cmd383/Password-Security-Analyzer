@@ -1,11 +1,7 @@
-# Password Security Analyzer
+# Password Security Analyzer 🔐
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-
----
-
-# Password Security Analyzer 🔐
 
 A modular, defensive Python tool and package designed to evaluate password strength using theoretical **Shannon Entropy** and check for compromised credentials via the **Have I Been Pwned (HIBP) API** using the **k-Anonymity** model.
 
@@ -22,35 +18,24 @@ A modular, defensive Python tool and package designed to evaluate password stren
 
 ---
 
-## 📁 Project Structure
+## 🚀 Installation
 
-```text
-Password-Security-Analyzer/
-│
-├── password_analyzer/
-│   ├── __init__.py
-│   └── analyzer.py
-├── .gitignore
-├── LICENSE
-├── main.py
-├── README.md
-└── requirements.txt
+1. **Clone the repository:**
 
----
-🚀 Installation
-Clone the repository:
+   ```bash
+   git clone [https://github.com/gala-cmd383/Password-Security-Analyzer.git](https://github.com/gala-cmd383/Password-Security-Analyzer.git)
+   cd Password-Security-Analyzer
+   ```
 
-Bash
-git clone [https://github.com/gala-cmd383/Password-Security-Analyzer.git](https://github.com/gala-cmd383/Password-Security-Analyzer.git)
-cd Password-Security-Analyzer
-Install dependencies:
+2. **Install dependencies:**
 
-Bash
-pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ---
 
-## Usage
+## 💻 Usage
 
 ### 1. As a Python Library
 
@@ -95,16 +80,32 @@ Enter password to analyze (input hidden):
 
 ---
 
-## Security & Ethics
+## 📁 Project Structure
 
-This tool is created for educational, analytical, and defensive security workflows. It strictly adheres to privacy standards:
-
-No plaintext passwords are stored, logged, or transmitted.
-
-API interactions strictly follow k-Anonymity protocols.
+```text
+Password-Security-Analyzer/
+│
+├── password_analyzer/
+│   ├── __init__.py
+│   └── analyzer.py
+├── .gitignore
+├── LICENSE
+├── main.py
+├── README.md
+└── requirements.txt
+```
 
 ---
 
+## 🛡️ Security & Ethics
 
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This tool is created for educational, analytical, and defensive security workflows. It strictly adheres to privacy standards:
+
+* No plaintext passwords are stored, logged, or transmitted.
+* API interactions strictly follow k-Anonymity protocols.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
