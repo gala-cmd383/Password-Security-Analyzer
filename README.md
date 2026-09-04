@@ -37,25 +37,16 @@ Password-Security-Analyzer/
 └── requirements.txt
 
 ---
-```
+🚀 Installation
+Clone the repository:
 
-
-##🚀 Installation
-
-
-1. **Clone the repository:**
-   ```text
-  bash
-  git clone [https://github.com/gala-cmd383/Password-Security-Analyzer.git](https://github.com/gala-cmd383/Password-Security-Analyzer.git)
+Bash
+git clone [https://github.com/gala-cmd383/Password-Security-Analyzer.git](https://github.com/gala-cmd383/Password-Security-Analyzer.git)
 cd Password-Security-Analyzer
-```
+Install dependencies:
 
-
-2. **Install dependencies:**
-```text
-   pip install -r requirements.txt
-
-   ```
+Bash
+pip install -r requirements.txt
 
 ---
 
