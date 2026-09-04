@@ -44,14 +44,17 @@ Password-Security-Analyzer/
 
 
 1. **Clone the repository:**
-   ```bash
+   ```text
+  bash
   git clone [https://github.com/gala-cmd383/Password-Security-Analyzer.git](https://github.com/gala-cmd383/Password-Security-Analyzer.git)
 cd Password-Security-Analyzer
-
+```
 
 
 2. **Install dependencies:**
+```text
    pip install -r requirements.txt
+
    ```
 
 ---
