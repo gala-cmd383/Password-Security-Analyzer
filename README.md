@@ -3,21 +3,26 @@
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-A professional Python package designed to evaluate password strength using Shannon Entropy mathematical calculations and perform breach checks via the Have I Been Pwned (HIBP) API using k-Anonymity.
+---
+
+# Password Security Analyzer 🔐
+
+A modular, defensive Python tool and package designed to evaluate password strength using theoretical **Shannon Entropy** and check for compromised credentials via the **Have I Been Pwned (HIBP) API** using the **k-Anonymity** model.
 
 ---
 
-## Features
+## 🌟 Key Features
 
-* **Entropy Calculation:** Evaluates password complexity and randomness using Shannon Entropy:
+* **Shannon Entropy Analysis:** Evaluates theoretical randomness and complexity using:
   $$E = L \times \log_2(R)$$
-  *(where $L$ is the password length and $R$ is the character pool size).*
-* **Breach Detection:** Queries the official **Have I Been Pwned** API to identify compromised credentials.
-* **Privacy First (k-Anonymity):** Implements client-side SHA-1 hashing. Only the first 5 characters (prefix) of the hash are sent over the network, ensuring the full password never leaves your local environment.
+  *(where $L$ is password length and $R$ is character pool size).*
+* **Real-World Breach Detection:** Queries the official Have I Been Pwned (HIBP) database to detect if credentials appeared in known data breaches.
+* **Privacy-Preserving (k-Anonymity):** Generates client-side SHA-1 hashes and transmits only the first 5 characters (prefix) over the network. Plaintext passwords never leave the local environment.
+* **Modular Interface:** Usable as a standalone CLI tool or imported directly into Python applications.
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 Password-Security-Analyzer/
@@ -30,21 +35,23 @@ Password-Security-Analyzer/
 ├── main.py
 ├── README.md
 └── requirements.txt
-```
 
 ---
+```
 
-## Installation
+
+##🚀 Installation
+
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/gala-cmd383/Password-Security-Analyzer.git](https://github.com/gala-cmd383/Password-Security-Analyzer.git)
-   cd Password-Security-Analyzer
-   ```
+  git clone [https://github.com/gala-cmd383/Password-Security-Analyzer.git](https://github.com/gala-cmd383/Password-Security-Analyzer.git)
+cd Password-Security-Analyzer
+
+
 
 2. **Install dependencies:**
-   ```bash
-   pip install requests
+   pip install -r requirements.txt
    ```
 
 ---
@@ -59,11 +66,11 @@ from password_analyzer.analyzer import PasswordAnalyzer
 # Initialize with target password
 analyzer = PasswordAnalyzer("SuperSecurePass2026!#")
 
-# 1. Calculate entropy
+# 1. Calculate theoretical entropy
 entropy = analyzer.calculate_entropy()
 print(f"Shannon Entropy: {entropy:.2f} bits")
 
-# 2. Check for breaches
+# 2. Check for known data breaches
 breaches = analyzer.check_breach()
 if breaches > 0:
     print(f"Alert: Found in leaks {breaches:,} times!")
@@ -96,10 +103,14 @@ Enter password to analyze (input hidden):
 
 ## Security & Ethics
 
-This tool is created for educational, analytical, and defensive security purposes. It strictly adheres to standard security practices by never storing, logging, or transmitting cleartext passwords.
+This tool is created for educational, analytical, and defensive security workflows. It strictly adheres to privacy standards:
+
+No plaintext passwords are stored, logged, or transmitted.
+
+API interactions strictly follow k-Anonymity protocols.
 
 ---
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
